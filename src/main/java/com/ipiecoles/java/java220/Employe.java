@@ -15,6 +15,8 @@ public abstract class Employe {
     private String matricule;
     private LocalDate dateEmbauche;
     private Double salaire;
+    private Boolean tempsPartiel;
+    private String sexe;
 
     public Employe(){}
 
@@ -24,6 +26,16 @@ public abstract class Employe {
         this.matricule = matricule;
         this.dateEmbauche = dateEmbauche;
         this.salaire = salaire;
+    }
+
+    public Employe(String nom, String prenom, String matricule, LocalDate dateEmbauche, Double salaire, Boolean tempsPartiel, String sexe) {
+        this.nom = nom;
+        this.prenom = prenom;
+        this.matricule = matricule;
+        this.dateEmbauche = dateEmbauche;
+        this.salaire = salaire;
+        this.tempsPartiel = tempsPartiel;
+        this.sexe = sexe;
     }
 
     public String getNom() {
@@ -72,6 +84,22 @@ public abstract class Employe {
         this.salaire = salaire;
     }
 
+    public Boolean getTempsPartiel() {
+        return tempsPartiel;
+    }
+
+    public void setTempsPartiel(Boolean tempsPartiel) {
+        this.tempsPartiel = tempsPartiel;
+    }
+
+    public String getSexe() {
+        return sexe;
+    }
+
+    public void setSexe(String sexe) {
+        this.sexe = sexe;
+    }
+
     public final Integer getNombreAnneeAnciennete() throws Exception {
         if(dateEmbauche == null){
             throw  new Exception("La date d'embauche est null");
@@ -91,7 +119,7 @@ public abstract class Employe {
 
     @Override
     public String toString() {
-        return "Employe{nom='" + nom + "', prenom='" + prenom + "', matricule='" + matricule + "', dateEmbauche=" + dateEmbauche + ", salaire=" + salaire +"}";
+        return "Employe{nom=" + nom + "', prenom='" + prenom + "', matricule='" + matricule + "', dateEmbauche='" + dateEmbauche + "', salaire='" + salaire + "', tempsPartiel='" + tempsPartiel + "', sexe='" + sexe +"}";
     }
 
     @Override
@@ -104,11 +132,13 @@ public abstract class Employe {
                 Objects.equals(prenom, e.prenom) &&
                 Objects.equals(matricule, e.matricule) &&
                 Objects.equals(dateEmbauche, e.dateEmbauche) &&
-                Objects.equals(salaire, e.salaire);
+                Objects.equals(salaire, e.salaire)&&
+                Objects.equals(tempsPartiel, e.tempsPartiel)&&
+                Objects.equals(sexe, e.sexe);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(nom, prenom, matricule, dateEmbauche, salaire);
+        return Objects.hash(nom, prenom, matricule, dateEmbauche, salaire, tempsPartiel, sexe);
     }
 }
